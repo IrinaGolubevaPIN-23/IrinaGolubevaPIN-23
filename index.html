@@ -8,16 +8,22 @@
   <!-- AR.js для маркеров -->
   <script src="aframe-ar.js"></script>
   <style> body { margin: 0; overflow: hidden; } </style>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const marker = document.getElementById('my-marker');
+    marker.addEventListener('markerFound', () => {
+      console.log('✅ Маркер найден!');
+    });
+    marker.addEventListener('markerLost', () => {
+      console.log('❌ Маркер потерян');
+    });
+  });
+</script>
 </head>
 <body>
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-    <a-marker preset="hiro">
-      <a-entity
-        gltf-model="Wall_with_name.glb"
-        position="0 0 0"
-        scale="0.1 0.1 0.1"
-        rotation="0 180 0"
-      ></a-entity>
+    <a-marker preset="hiro" id="my-marker">
+      <a-entity gltf-model="Wall_with_name.glb" ... ></a-entity>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
