@@ -2,28 +2,25 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Моя стена</title>
-  <!-- A-Frame -->
+  <title>Прыгающий кубик</title>
+  <!-- Подключаем A-Frame из интернета -->
   <script src="aframe.min.js"></script>
-  <!-- AR.js для маркеров -->
+  <!-- Подключаем AR.js из интернета -->
   <script src="aframe-ar.js"></script>
-  <style> body { margin: 0; overflow: hidden; } </style>
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const marker = document.getElementById('my-marker');
-    marker.addEventListener('markerFound', () => {
-      console.log('✅ Маркер найден!');
-    });
-    marker.addEventListener('markerLost', () => {
-      console.log('❌ Маркер потерян');
-    });
-  });
-</script>
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
 </head>
 <body>
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-    <a-marker preset="hiro" id="my-marker">
-      <a-entity gltf-model="Wall_with_name.glb" ... ></a-entity>
+    <a-marker preset="hiro">
+      <a-entity
+        gltf-model="Komochek.glb"
+        position="0 0 0"
+        scale="0.1 0.1 0.1"
+        rotation="0 180 0"
+        animation="property: position.y; to: 0.5; dur: 1000; easing: linear; loop: true; dir: alternate"
+      ></a-entity>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
